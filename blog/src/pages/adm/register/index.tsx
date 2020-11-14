@@ -1,11 +1,13 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { Link, useHistory } from 'react-router-dom';
 
-import api from '../../services/api';
+import api from '../../../services/api';
+import isLoged from '../../../services/isLoged';
 
-import { Container } from '../panel-login/styles';
+import { Container } from '../login/styles';
 
 const PanelRegister = () => {
+  const history = useHistory();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [secret, setSecret] = useState('');
@@ -17,10 +19,22 @@ const PanelRegister = () => {
         password,
         secret,
       })
-      .then((res) =>
-        localStorage.setItem('Authorization', 'Bearer ' + res.data.token)
-      );
+      .then((res) => {
+        localStorage.setItem('Authorization', 'Bearer ' + res.data.token);
+        return history.push('/adm/panel');
+      })
+      .catch(() => alert('Erro'));
   };
+
+  useEffect(() => {
+    verifyLogin();
+    // eslint-disable-next-line
+  }, []);
+
+  const verifyLogin = async () => {
+    if(await isLoged()) return history.push('/adm/panel');
+  }
+
   return (
     <Container>
       <h1>Painel de Administrador</h1>

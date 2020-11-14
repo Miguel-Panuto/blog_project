@@ -2,80 +2,68 @@ import styled from 'styled-components';
 
 import { maxWidth } from '../../constants/sizes';
 
-import { primaryColor, accentColor } from '../../constants/colors';
-
 export const Container = styled.div`
   max-width: ${(_) => maxWidth};
-  width: 100%;
   margin: 10px auto;
-  padding: 10px 30px;
-  display: flex;
-  flex-direction: row;
-  ul {
+  width: 100%;
+
+  > div {
+    padding: 10px 30px;
+    display: flex;
+    flex-direction: row;
+  }
+
+  .content > div > ul {
     list-style: none;
     background-color: #ccc;
     padding: 20px;
     border-radius: 10px;
   }
 
-  ul > li {
+  .content > div > ul > li {
     margin: 10px 0;
   }
 
-  ul > li > a {
+  .content > div > ul > li > a {
     color: #333;
     text-decoration: none;
   }
 
-  ul > li > a:hover {
-    color: #AAA;
+  .content > div > ul > li > a:hover {
+    color: #aaa;
     transition-duration: 0.2s;
   }
-`;
 
-export const Post = styled.div`
-  div {
+  .pagination {
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    justify-items: center;
-    margin-right: 40px;
+    justify-content: center;
+    margin: 20px 0;
   }
 
-  div > strong {
-    color: #777;
+  .pagination-nav > ul {
+    display: inline-block;
+    list-style: none;
   }
 
-  .tags {
-    justify-content: flex-start;
+  .pagination-item {
+    text-align: center;
+    display: inline-block;
+    cursor: pointer;
+    margin: 10px 5px;
+    padding: 10px 15px;
+    box-shadow: 2px 2px 5px 2px #2223;
+    border-radius: 5px;
+    background-color: #acf;
   }
 
-  .tags > h6, .tags > span {
-    font-size: 0.8rem;
-    color: #999;
-    margin-right: 5px;
+  .pagination-item:hover {
+    color: #fff;
+    background-color: #9bd;
+    transition: 0.2s;
   }
 
-  h3 {
-    color: ${(_) => primaryColor};
-    margin-bottom: 10px;
-  }
-
-  margin: 10px 5px;
-
-  a {
-    color: ${(_) => accentColor};
-    font-weight: bold;
-    text-decoration: none;
-  }
-
-  h3:hover {
-    color: #ac1731;
-    transition-duration: 0.2s;
-  }
-
-  a:hover {
-    color: #895422;
-    transition-duration: 0.2s;
+  .link-pg {
+    color: #444;
   }
 `;
+

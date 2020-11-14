@@ -1,6 +1,7 @@
 import axios from 'axios';
+import { IP } from '../constants/ip';
 
-const baseURL = process.env.API_URL || 'http://localhost:3334';
+const baseURL = IP;
 
 const api = axios.create({
   baseURL,
